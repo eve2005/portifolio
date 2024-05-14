@@ -1,0 +1,1516 @@
+/* CSS DO SITE 'UNOVERSE' INTEIRO
+esse arquivo contem todas as configuracoes de CSS usadas na plataforma,
+estao explicadas ao maximo, escolhemos nao utilizar mais deum arquivo css
+ para evitar geracao de mais arquivos alem dos ja existentes no laravel :) */
+
+
+/* importacao de icones */
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
+
+/* a principal funçao dessas variaveis do css eh de trocar a cor de tema e suas transicoes. 
+algumas cores repetem porque tinha cor igual que trocava para cor diferente, por exemplo o 
+azul do fundo que virava branco, mas o mesmo azul fazia parte do topo */
+:root{
+    --cor-primaria: #003F64;
+    --cor-secundaria: #FFFFFF; 
+    --cor-terciaria: #001F32; 
+    --cor-quaternaria: #000000;
+    --cor-quinta: #003F64;
+    --cor-sexta: #FFFFFF;
+    --cor-setima: #CEE8FF;
+    --cor-oitava: #00468D;
+    /* transição */
+    --transicao1: background-color;
+    --transicao2: color;
+    --transicaoDuracao: 0.4s;
+    --transicaoTempo: ease;
+    --transicao: var(--transicao1) var(--transicaoDuracao)
+            var(--transicaoTempo),
+        var(--transicao2) var(--transicaoDuracao)
+            var(--transicaoTempo);
+
+  /* vars de pagina acoes */
+  --font:'Consolas', sans-serif;
+  --color: #379BFF;
+  --bg-color: var(--cor-setima);
+}
+
+
+/* CONFIGURACOES USADAS EM ASPECTOS GERAIS DA PAGINA (menu, footer, divs mae e body, etc) */
+/* alteracao de alguns aspectos de classes que sao do bootstrap */
+.fixada{ /*topo*/
+    background-color: var(--cor-primaria) !important;
+    box-shadow: 0 10px 40px 0 var(--cor-setima);
+    transition: var(--transicao);
+}
+.nav-link{ /*topo*/
+    font-family: 'Consolas';
+    color: var(--cor-secundaria) !important;
+    transition: var(--transicao);
+}
+.nav-link:hover{ /*topo*/
+    color: #FFAD5A!important;
+}
+.offcanvas-header{ /*topo*/
+    background-color: var(--cor-primaria) !important;
+    transition: var(--transicao);
+}
+.offcanvas-body{ /*topo*/
+    background-color: var(--cor-primaria) !important;
+    transition: var(--transicao);
+}
+.dropdown-menu{ /*topo*/
+    background-color: var(--cor-primaria) !important;   
+    transition: var(--transicao);
+}
+
+/* definicao geral de todas as paginas */
+*{
+    scroll-behavior: smooth;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+/* div mae*/
+.mae{
+    margin-top: 15vh;
+    background-color: var(--cor-sexta);
+    color: var(--cor-quaternaria);
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    transition: var(--transicao);
+}
+
+/* configurações do footer */
+  .footer{
+    background-color: var(--cor-primaria);
+    color: var(--cor-secundaria);
+    width: 100%;
+  }
+  
+  .footer .logo-space {
+    color: var(--cor-secundaria);
+    max-width: 1010px;
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 3rem;
+    font-family: Consolas;
+  }
+  
+  .footer .conteudo {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 1.5rem;
+  }
+  
+  .footer .conteudo p {
+    margin-bottom: 1.3rem;
+  }
+  
+  .footer .menu-footer a {
+    text-decoration: none;
+    color: var(--cor-secundaria);
+  }
+  .footer .social a {
+    text-decoration: none;
+    color: var(--cor-secundaria);
+  }
+  
+  .footer .menu-footer a:hover {
+    border-bottom: 1px solid #FFAD5A;
+  }
+
+  .footer .social a:hover {
+    border-bottom: 1px solid #FFAD5A;
+  }
+  .voltar{
+    color: var(--cor-secundaria);
+    transition: var(--transicao);
+  }
+  .voltar:hover{
+    color: #FFAD5A;
+    transition: var(--transicao);
+  }
+
+  .footer .conteudo h4 {
+    margin-bottom: 1.3rem;
+    font-size: 19px;
+    color:#FFAD5A;
+  }
+  
+  footer {
+    text-align: center;
+  }
+
+  /* parte que arruma footer para telas diferentes (responsividade) */
+  @media (max-width: 767px) {
+    .footer .conteudo {
+      display: flex;
+      flex-direction: column;
+      font-size: 14px;
+    }
+    .footer {
+      position: unset;
+    }
+  }
+  
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .footer .conteudo,
+    .footer {
+      font-size: 14px;
+    }
+  }
+  
+  @media (orientation: landscape) and (max-height: 500px) {
+    .footer {
+      position: unset;
+    }
+  }
+
+/* tamanho logomarca */
+.logomarca{
+  align-items: left;
+  justify-content: left;
+  align-content: left;
+  height: 8vh;
+} 
+
+/* icone sol */
+.sol{
+    color: var(--cor-secundaria)  ;
+    padding: 0.7vh;
+    padding-right: 0vh;
+    height: 6vh;
+    transition: var(--transicao);
+}
+.sol:hover{
+    color: #FFAD5A;
+}
+
+/* body para pagina */
+.body{
+    width: 100%;
+    font-family: Consolas;
+    /* display: flex; */
+    /* margin-top: 16vh; */
+    /* color: var(--cor-quaternaria);sw */
+    position: relative ;
+}
+
+/* PAGINA DE HOME (home.blade.php) */
+/* slider */
+.container-slide{
+    height: 74.6vh;
+    width: 100vw;
+    /* border-radius: 20px; */
+    overflow: hidden;
+    position: relative;
+    top: 37.4vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+    margin-bottom: 5vh;
+ }
+
+ .navigation{
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translate(-50%);
+    display: flex;
+ }
+ .dot{
+    width: 8px;
+    height: 8px;
+    border: 2px solid var(--cor-secundaria);
+    margin: 6px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.6s;
+ }
+ .bar:hover{
+    background-color: var(--cor-secundaria);
+ }
+
+ input{
+    display: none;
+ }
+
+ .slides{
+    display:flex;
+    width: 500vw;
+    height: 100vh;
+ }
+ .slide {
+    width: 20%;
+    transition: 0.6s;
+
+ }
+
+ .slide img{
+    width: 99vw;
+    height: 100%;
+ }
+
+ #slide1:checked ~ .s1{ /*Testa para saber se o slide1 está check, caso esteja a class .s1 assume a propriedade definida*/
+    margin-left: 0;
+ }
+ #slide2:checked ~ .s1{/*Testa para saber se o slide2 está check, caso esteja a class .s1 assume a propriedade definida*/
+    margin-left: -20%;
+ }
+ #slide3:checked ~ .s1{/*Testa para saber se o slide3 está check, caso esteja a class .s1 assume a propriedade definida*/
+    margin-left: -40%;
+ }
+
+ .video{
+  display: flex;
+ }
+ .bolas{
+  position: relative;
+  z-index: 1;
+  display: flex;
+
+ }
+.video iframe{
+  position: absolute;
+  z-index: 10;
+  margin-top: 3vh;
+  margin-left: 5vw;
+
+
+}
+.video p{
+  position: absolute;
+  font-size: 1.2vw; 
+  line-height: 5.5vh;
+  width: 45vw;   
+  margin-left: 50vw;
+  margin-top: 2vh;
+  z-index: 10;
+
+}
+ #bolas_azuis{
+  width: 25vw;
+  height: 33vh;
+  margin-top: 12vh;
+  margin-left: 2vh;
+
+ }
+ #bolas_amarelas{
+  width: 14vw;
+  height: 30vh;
+  margin-left: 1vw;
+
+
+ }
+ #wave_home{
+  position: relative;
+  z-index: 1;
+
+ }
+ 
+ .arduino_info{
+  display: block;
+  text-align: center;
+  justify-content:center;
+ }
+
+.arduino_info h2{
+  position: absolute;
+  z-index: 10;
+  color: #FFFFFF;
+  font-size: 4vw;
+  width: 42vw;
+  margin: 50vh 30vw 0vh 30vw;
+}
+.texto_info{
+  align-items: center !important;
+  position: absolute;
+  z-index: 10;
+  display: block;
+  color: #FFFFFF;
+  font-size: 1.2vw;
+  margin: 140vh 20vw 0vh 20vw;
+  align-items: center !important;
+
+  
+}
+.texto_info img{
+  width: 50vw;
+  margin-top: 7vh;
+  margin-bottom: 7vh;
+}
+
+.componentes{
+  display: grid;
+  grid-template-columns:  repeat(3,25vw);
+  position: absolute;
+  z-index: 11;
+   margin: 70vh 12vw 0vh 12vw;
+}
+.componentes a img{
+  width: 21vw;
+}
+.componentes a{
+  transition: 0.5s;
+}
+.componentes a:hover{
+  filter: brightness(40%);
+  transition: 0.5s;
+}
+.janela-modal-placa-uno{
+  /* essa classe pe o overlay responsável por deixar o fundo do site escuro quando o botão é apertado */
+  width: 100vw;
+  height: 597vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #00000073;
+  display: none;  
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+.janela-modal-protoboard{
+  /* essa classe pe o overlay responsável por deixar o fundo do site escuro quando o botão é apertado */
+  width: 100vw;
+  height: 597vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #00000073;
+  display: none;  
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+.janela-modal-jumpers{
+  /* essa classe pe o overlay responsável por deixar o fundo do site escuro quando o botão é apertado */
+  width: 100vw;
+  height: 597vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #00000073;
+  display: none;  
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+.janela-modal-placa-uno.abrir{
+  display: flex;
+}
+.janela-modal-protoboard.abrir{
+  display: flex;
+}
+.janela-modal-jumpers.abrir{
+  display: flex;
+}
+.modal{
+  background-color: #ffffffb6;
+  backdrop-filter: blur(10px);
+  border-radius: 2vw;
+  display:block !important; 
+  width:60vw !important; 
+  height:70vh !important; 
+  margin-left:17vw;
+  margin-top:20vh; 
+  padding: 10vh;
+ 
+}
+.conteudo_modal{
+  display: flex;
+  font-size: 1vw;
+  line-height: 4.5vh;
+  margin-top: 5vh;
+}
+.conteudo_modal img{
+  width: 20vw !important;
+  margin-right: 5vw;
+
+}
+.fechar{
+  position: absolute;
+  top: 5vh;
+  left: 55vw;
+  width: 3vw;
+  height: 3vw;
+  border-radius: 100%;
+  background-color: #ff251e;
+  border: 0;
+  color: #FFFFFF;
+}
+
+
+
+
+
+/* PAGINA DE DEVS (devs.blade.php) */
+/*engloba apenas um dev e um texto de apresentacao*/
+.engloba-texto{
+  margin-top: 20vh;
+    width: 98%;
+    display: flex;
+}
+
+/* texto de apresentacao dos devs */
+.texto-devs{
+    margin-left: 5vw;
+    width: 50%;
+    height: 10vh;
+    padding: 3vh;
+    text-align: justify;
+    /* margin: auto; */
+    
+}
+.texto-devs h1{
+    font-weight: bold;
+}
+
+/*engloba os outros 6 devs */
+.engloba-pessoas{
+    display:grid; 
+    grid-template-columns: repeat(3,22vw);
+    grid-column-gap: 1vw;
+    grid-row-gap: 5vh;
+    margin-top: 20vh;
+    font-family: Consolas;
+    position: relative;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+/* card de laura e configuracoes */
+.card-roxo{
+    float: left;
+    transition: 0.2s;
+    margin-right: 1vw;
+    width: 50%;
+    height: 40vh;
+    background-color: #9747FF;
+    border-radius: 3Vw;
+    text-align: right;
+    padding: 1vh;
+    box-shadow: 0 1vw 1vw rgba(0,0,0,0.5);
+}
+.card-roxo img{
+    width:15vw;
+    clip-path: circle();
+    margin-top: 5vh;
+}
+.card-roxo h2{
+    font-size: 2rem;
+    margin-left: 2vw;
+    margin-top: 5vh;
+    font-size: 2rem;
+    float: left;
+    padding: 1vw;
+    width: 25vw;
+    font-family: Consolas;
+    color:var(--cor-secundaria);
+    text-align: center;
+    background-color: #C496FF;
+    border-radius: 3vw;
+    transition: var(--transicao);
+}
+.card-roxo:hover{
+    transition: 0.2s;
+    transform: translateY(-1vw); 
+	box-shadow: 0 1vw 1vw rgba(255,170,202); 
+}
+
+/* card de nicole, paula e evellyn e suas configuracoes */
+.card-azul{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #379BFF;
+    border-radius: 3Vw;
+    transition: 0.2s;
+    box-shadow: 0 1vw 1vw rgba(0,0,0,0.5);
+}
+.card-azul:hover{
+    transition: 0.2s;
+    transform: translateY(-1vw); 
+	  box-shadow: 0 1vw 1vw rgba(255,213,113); 
+}
+.card-azul img{
+    width:15vw;
+    clip-path: circle();
+    margin: 3vw;
+}
+.card-azul h2{
+    padding: 1vw;
+    font-size: 1rem;
+    width: 15vw;
+    font-family: Consolas;
+    color:var(--cor-secundaria);
+    background-color: #92C8FF;
+    border-radius: 3vw;
+    transition: var(--transicao);
+}
+
+/* card de pedro, eloisa e deborah e suasconfiguracoes */
+.card-amarelo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 0.2s;
+    background-color: #FFAD5A;
+    border-radius: 3vw;
+    box-shadow: 0 1vw 1vw rgba(0,0,0,0.5);
+}
+.card-amarelo img{
+    width:15vw;
+    clip-path: circle();
+    margin: 3vw;
+}
+.card-amarelo h2{
+    font-size: 1rem;
+    padding: 1vw;
+    width: 15vw;
+    font-family: Consolas;
+    color:var(--cor-secundaria);
+    text-align: center;
+    background-color: #FFD571;
+    border-radius: 3vw;
+    transition: var(--transicao);
+}
+.card-amarelo:hover{
+    transition: 0.2s;
+    transform: translateY(-1vw); 
+	box-shadow: 0 1vw 1vw rgba(146,200,255); 
+}
+
+ 
+/* PAGINA DE MODULOS (modulos.blade.php) */
+ 
+.titulo{
+    color:#FFAD5A;
+    font-family: 'Consolas';
+    font-size: 3vw;
+    /* margin-left: 5vw; */
+    margin-top: 3vh;
+    margin-bottom: 5vh;
+ }
+ 
+ .line_modo{
+    height: 60vh;
+    margin-top: 20vh;
+    width: auto;
+ 
+ }
+ 
+ .imagemmodu{
+     width: 30vw;
+ }
+ 
+ 
+ .caixa{
+    width: 30vw;
+    float: left;
+    margin-left: 13vw;
+    font-family: 'Consolas';
+    font-size: 1.5vw;
+    text-align: justify;
+ }
+
+ .modulos{
+    margin-bottom: 50em;
+ }
+ .line_modo a{
+  text-decoration: none;
+  color: #1789FC;
+ }
+ .line_modo a:hover{
+  border-bottom: 1px solid #FFAD5A;
+ }
+ .modulos a{
+  text-decoration: none;
+  color: #1789FC;
+ }
+ .modulos a:hover{
+  border-bottom: 1px solid #FFAD5A;
+ }
+
+/* PAGINA DE ENTRAR (entrar.blade.php) */
+
+ .container{
+    background-color: yellow;
+    width: 70vw;
+    height: 120vh;
+    /* z-index: 2; */
+ }
+.input-field{
+    background-color: #9747FF;
+    width: 30vw;
+    height: 40vh;
+    /* z-index: 1; */
+ }
+
+ 
+
+ /*ENTRAR*/
+ .espaco{
+  margin-top: 20vh;
+ }
+ .form_entrar{
+  width: 60vw;
+  height: 80vh;
+  margin-top: 5vh;
+  margin-left: 17vw;
+  margin-right: 20vw;
+  background: linear-gradient(150.96deg, #FFAD5A 6.47%, #FFD571 101.21%);
+  border-radius: 4vh;
+  color: #FFFFFF;
+  font-family: 'Consolas';
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10vh;
+}
+.form_entrar h1{
+  font-size: 6vh;
+  padding-left: 5vw;
+  padding-top: 2vw;
+}
+.form_entrar label{
+  font-size: 4vh;
+  padding-left: 5vw;
+  padding-top: 2vw;
+}
+/* .form_entrar input{
+  /* background-color:none; 
+  border-color: var(--cor-secundaria);
+  z-index: -1;
+} */
+/* elementos */
+.linha_titulo{
+  display:flex;
+  padding-left: 5vw;
+}
+/* o espaco ate a linha do adm precisava diminuir, por isso criamos retangulo 2 */
+.linha_titulo2{
+  display:flex;
+  padding-left: 1vw;
+}
+.retangulo{
+  width: 12vw;
+  height: 1vh;
+  left: 21vw;
+  top: 34vh;
+  background:#FFFFFF;
+  border-radius: 5vh;
+}
+/* o retangulo do adm precisava aumentar, por isso criamos retangulo 2 */
+.retangulo2{
+  width: 30vw;
+  height: 1vh;
+  /* left: 21vw; */
+  top: 34vh;
+  background:#FFFFFF;
+  border-radius: 5vh;
+}
+.bola{
+  width: 0.6vw;
+  height: 0.6vw;
+  border-radius: 100%;
+  background: #FFFFFF;
+  margin-left:1vw;
+}
+.form-itens{
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  float: left;
+  width: 40vw;
+  height: 8vh;
+}
+
+.form-itens input{
+  color: #FFFFFF;
+  display: flex;
+  width: 45vw;
+  height: 5vh;
+  background: linear-gradient(150.96deg, #FFAD5A 6.47%, #FFD571 101.21%);
+  border: 0.2vw solid #FFFFFF;
+  border-radius: 3.7vw;
+  margin-top: 1vh;
+  margin-left: 5vw;
+  outline: none;
+}
+
+
+.form-btn label{
+color: #FFAD5A;
+background-color: #FFFFFF;
+padding-left: 2vw;
+padding-top: 1vw;
+width: 10vw;
+height: 9vh;
+border-radius: 10vh;
+float: left;
+margin-left: -24vw;
+margin-top: 14vw;
+
+}
+
+.form-btn a{
+color: #FFAD5A;
+background-color: #FFFFFF;
+padding-left: 2vw;
+padding-top: 1vw;
+width: 13vw;
+height: 9vh;
+float: left;
+margin-left: -8vw;
+margin-top: 14vw;
+font-size: 4vh;
+text-decoration: none;
+border-radius: 15vh;
+}
+.olhoCor{
+  color: #FFFFFF;
+}
+#olho
+{
+    float: right;
+    display: flex;
+    font-size: 40px;
+}
+
+/* essas classes abaixo servem para arrumar o lugar do olho ao lado do input */
+.container-senha{
+  height: 5vh;
+  background-color: transparent;
+}
+
+.input-wrapper{
+  /* padding: 8px 12px; */
+  width: 49vw;
+  display: flex;
+  align-items: center;
+  gap:6px;
+}
+
+/* PAGINAS DE CADASTRO (pasta links) */
+/*Form cadastro padrao entre os modos*/
+.form-cad{
+width: 60vw;
+height: 87vh;
+border-radius: 40px;
+margin-left: 5vw;
+margin-bottom: 10vh;
+}
+
+.form-cad h1 {
+font-size: 40px;
+color:#FFFFFF;
+margin-left: 5vw;
+padding-top: 2vh;
+}
+.form-cad label {
+outline: none;
+font-size: 24px;
+color:#FFFFFF;
+}
+.form-cad input{
+font-size: 10px;
+color:#FFFFFF;
+display: block;
+border: 1px solid;
+border-radius: 4vh;
+font-size: 16px;
+width: 22vw;
+height: 3.7vh;
+margin-top: 2vh;
+outline: none;
+}
+
+.cad-items-radio label{
+font-size: 18px;
+margin-right: 0vw;
+margin-top: 1vh;
+}
+.cad-items-radio input{
+outline: none;
+width: 1vw;
+margin-right: 0.5vw;
+margin-top: 0;
+float: left;
+
+}
+
+.cad-items{
+float: left;
+margin-left: 3.5vw;
+margin-right: 2vw;
+margin-top: 6vh;
+}
+
+.cad-items select{
+width: 21vw;
+height: 4vh;
+border-radius: 2vw;
+display: block;
+margin-top: 2vh;
+}
+
+
+.cad-items-submit input{
+outline: none;
+background: #FFFFFF;
+width: 9vw;
+height: 8vh;
+border-radius: 2vw;
+font-size: 25px;
+float: left;
+margin-left: 0vw;
+margin-top: 9vh;
+}
+
+
+
+/*Configuraçoess especificas de curioso*/
+.cad-curioso img{
+float:right;
+margin-right: -28vw;
+margin-top: -35vh;
+width: 17vw;
+}
+
+.cad-curioso{
+background: linear-gradient(141deg, #9747FF 0%, #BE8BFF 100%);
+}
+.cad-curioso input{
+background: linear-gradient(141deg, #9747FF 0%, #BE8BFF 100%);
+outline: none;
+}
+.envia:hover{
+  text-decoration: underline;
+}
+
+/*Configuracoes especificas de estudante*/
+.cad-estudante{
+background: linear-gradient(144deg, #1AB9BD 0%, #00FFD1 100%);
+height: 107vh;
+}
+.cad-estudante input{
+background: linear-gradient(144deg, #1AB9BD 0%, #00FFD1 100%); 
+outline: none;
+}
+.cad-estudante img{
+  float: left;
+  margin-left: 65vw;
+  margin-top: -63vh;
+  width: 25vw;
+}
+.cad-estudante select{
+background: #00FFD1;
+}
+.envia:hover{
+  text-decoration: underline;
+}
+
+/*Configuracoes especificas de Professor*/
+.cad-professor{
+background: linear-gradient(141deg, #006CD9 0%, #1789FC 100%);
+height: 107vh;
+}
+.cad-professor input{
+background: linear-gradient(141deg, #006CD9 0%, #1789FC 100%);
+outline: none;
+}
+.cad-professor img{
+  float: left;
+  margin-left: 65vw;
+  margin-top: -63vh;
+  width: 25vw;
+}
+.cad-professor select{
+background: #1789FC;
+}
+.envia:hover{
+  text-decoration: underline;
+}
+
+
+/*  TELAS ADM */
+
+
+
+/*pagina index*/
+
+.bloco-geral{
+  display: flex;
+  margin-top: 10vh;
+  margin-left: 2vw;
+}
+
+.botoes-escolha{
+  width: 60%;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
+
+.img-adm{
+  width: 40%;
+}
+
+.img-adm img{
+  width: 30vw;
+  height: 90vh;
+}
+
+.btn-escolha{
+  margin: 2vw;
+  padding: 1vw;
+  width: 28vw;
+  height: 8vh;
+  background-color: #1789FC;
+  color: #FFFFFF;
+  text-decoration: none;
+  border-radius: 2vw;
+  font-size: 1vw;
+  transition: var(--transicao);
+}
+
+.btn-escolha:hover{
+  background-color: #50a6fc;
+  transition: var(--transicao);
+}
+
+/*Configuracao da tabela da listagem de dados*/
+.adm{
+  /* margin-top: 17vh; */
+  margin-left: 2vw;
+}
+.adm h3{
+  color:#FFAD5A;
+  font-size: 50px;
+  margin-bottom: -10vh;
+}
+.adm table{
+  margin-left: 2vw;
+  border: 2px solid #FFF;
+  background-color: #003F64;
+  font-size: 25px;
+  color: #003F64;
+}
+
+.adm thead{
+  border: 1px solid;
+  padding: 1vw;
+  background-color: #003F64;;
+}
+
+.adm tr{
+  margin: 0vw;
+}
+.adm td{
+  padding-right: 7vw;
+  color: #FFF;
+}
+
+.adm input
+{
+  color: #FFF;
+  display:block;
+}
+
+.btn-lista{
+  color: #fff;
+  background-color: #003F64;
+  font-size: 25px;
+  margin-top: 2vh;
+  border-radius: 4vw;
+  
+
+}
+
+.btn-add{
+  width: 6vw;
+  height: 5vh;
+  text-align: center;
+  margin: 1vh;
+  margin-top: 5vh;
+  
+  
+}
+.lista-add{
+    width: 15vw;
+    height: 10vh;
+    background: linear-gradient(141deg, #003F64  0%, #006CD9 100%);
+    padding: 1vw;
+    border-radius: 2vw;
+    padding-inline: 2vw;
+    margin-top: 5vh;
+    text-decoration: none;
+    
+}
+
+
+/* Estilo para o modal de fundo */
+#modal-bg {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+}
+
+/* Estilo para o modal interno */
+.modal-iframe {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  background-color: #fff;
+  border: 1px solid #000;
+}
+
+/* Estilo para o botão de fechar o modal */
+#fechar-modal {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  cursor: pointer;
+}
+.btn-visua
+{
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #000;
+}
+
+
+
+
+
+
+
+/* Configuraçoes na pagina Cadastrar */
+.cadatv-content{
+  display: flex;
+  margin-top: 15vh;
+  margin-left: 3vw;
+  justify-content: space-between;
+
+}
+.conteudo_form_ativ{
+  margin-left: 5%;
+}
+.form_atividade h3{
+  color: #fff;
+  font-size: 4.9vh;
+  margin-top:2%;
+  margin-left:2%;
+}
+.adicionar_ativ{
+  margin-top: 10%;
+  margin-left: 65%;
+  background-color: #fff;
+  color: #F96800;
+  border: none;
+  border-radius: 5.2vh;
+  width: 12vw;
+  height: 10vh;
+  font-size: 1.8vw;
+  transition: var(--transicao);
+}
+
+.adicionar_ativ:hover{
+  background-color: #ffb682;
+  color:#ffffff;
+  transition: var(--transicao);
+}
+.form_atividade{
+  background: linear-gradient(90deg, rgba(249,104,0,1) 4%, rgba(255,173,90,1) 98%);
+  width: 39.6vw;
+  height: 86.6vh;
+  border-radius:3vw;
+}
+.form_cad_ativ{
+
+  margin-top: 8%;
+} 
+.form_cad_ativ label{
+  color: #fff;
+  font-size: 3vh;
+}
+.form_cad_ativ input{
+  display:block;
+  outline: none;
+  border-color: #fff;
+  border-radius: 5.2vh;
+  background: linear-gradient(90deg, rgba(249,104,0,1) 4%, rgba(255,173,90,1) 98%);
+  width: 50%;
+  
+}
+.espaco{
+  color: #fff;
+}
+.escolha{
+  text-align: center;
+}
+.cards_cadastro{
+  display:flex;
+  justify-content: space-between;
+  margin-left: 10vw;
+  margin-right: 10vw;
+  margin-bottom: 10vh;
+  margin-top: 5vh;
+}
+.estudante{
+  background-color: #00DEB6;
+  width: 20vw;
+  height: 60vh;
+  box-shadow: 1vw 3vh 1.5vw gray;
+  border-radius: 3vh;
+}
+.curioso{
+  background-color: #AC6BFF;
+  width:20vw;
+  height: 60vh;
+  box-shadow: 1vw 3vh 1.5vw gray;
+  border-radius: 3vh;
+
+}
+.professor{
+  background-color: #1789FC;
+  width:20vw;
+  height: 60vh;
+  box-shadow: 1vw 3vh 1.5vw gray;
+  border-radius: 3vh;
+}
+.botao_modulo{
+  background-color: #FFAD5A;
+  color:#FFF;
+  width: 14vw;
+  height: 11vh;
+  border-radius: 3vw;
+  margin: 13vh 3vw 3vw;
+  text-align: center;
+  padding-top: 2vh;
+
+}
+.imagem_cad{
+  text-align: center;
+  width:30vh;
+  height: 15vw;
+  margin: 2vh 1.5vw 2vh 1.5vw;
+}
+.img-cad{
+  width: 15vw;
+  height: 40vh;
+}
+.botao_modulo a{
+  color: #FFF;
+  text-decoration: none;
+  font-size: 2vw;
+  margin-top: 5vh;
+
+}
+.botao_modulo:hover{
+  background-color: #ff8710;
+} 
+
+/*Configuração da página Acoes*/
+.texto_acoes{
+  position: absolute;
+  z-index: 10;
+  margin-top: 20vh;
+  margin-left: 10vw;
+  margin-right: 10vw;
+  color: #fff;
+  line-height: 4.5vh;
+}
+.texto_acoes p{
+  font-size: 1.1vw;
+  margin-top: 5vh;
+  color: #181818;
+}
+.texto_acoes h1{
+  font-size: 2.5vw;
+  margin-top: 5vh;
+}
+#wave_acoes{
+  position: relative;
+  width:100vw;
+  z-index: 1;
+}
+
+ /* acoes-slider */
+ .envolve__slider{
+  font-family: var(--font);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  box-sizing: border-box;
+}
+ 
+.swiper{
+  width:99%;
+}
+.swiper-wraper{
+  height: 40em;
+  display: flex;
+  align-items: center;
+}
+.card{
+  background-color: var(--bg-color);
+  width:40em;
+  height:100%;
+  border-radius: 2em;
+  box-shadow: 0 0 2em rgba(0, 0, 0, .2);
+  padding: 2em 1em;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  margin: 0 2em;
+}
+
+.swiper-slide:not(.swiper-slide-active){
+  filter: blur(3px);
+}
+.card__image{
+  width: 39em;
+  height: 20em;
+  border-radius: 20%;
+  border: 5px solid var(--color);
+  padding: 3px;
+  margin-bottom: 2em;
+}
+
+.card__image img{
+  width:100%;
+  height: 100%;
+  border-radius: 20%;
+  object-fit: cover;
+}
+
+.card__content{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+}
+.card__title{
+  font-size: 1.5em;
+  font-weight: 500;
+  position: relative;
+  top:.2em;
+}
+
+.card__name{
+  color:var(--color);
+
+}
+
+.card__text{
+  text-align: center;
+  font-size: 1.5em;
+  margin: 1em 0;
+
+}
+.body-perfil h3{
+  color: #000000;
+  font-size: 3vw;
+  margin-top: 20vh;
+  margin-left: 5vw;
+}
+.quadro-perfil{
+  width: 90vw;
+  height: 90vh;
+  margin-left: 5vw;
+  margin-top: 13vh;
+  background-color: #1789FC;
+  border-radius: 3vw;
+  display: flex;
+}
+.quadro-perfil p{
+  color: #fff;
+
+}
+.img_perfil img{
+  width: 20vw;
+  clip-path: circle();
+  margin-left: 5vw;
+  margin-top: 15vh;
+}
+
+
+/*
+.conteudo * {
+  
+  margin: 0;
+  /* margin-top: 4px; 
+  /* margin-left: 2px; 
+  padding: 0;
+  user-select: none;
+
+  /* color: white; 
+  box-sizing: border-box;
+  font-family: 'Consolas';
+  
+
+}
+.btnC{
+  position: absolute;
+  top: 15px;
+  /* margin-top: 10px; 
+  left: 45px;
+  height: 45px;
+  width: 45px;
+  text-align: center;
+  background: #1b1b1b;
+  border-radius: 3px;
+  cursor: pointer;
+  transition:  left 0.4s ease ;
+  /* display: flex; 
+}
+.btnC.click
+{
+  left: 260px;
+}
+.btnC span{
+  color: white;
+  font-size: 28px;
+  line-height: 45px;
+}
+.btnC.click span:before{
+  content: '\f00d';
+}
+
+.sidebar2{
+  position: fixed;
+  width: 250px;
+  
+  height: 100%;
+  left: -250px;
+  background-color: #1b1b1b;
+  transition: left 0.4s ease;
+}
+.sidebar2.show{
+  left: 0px;
+}
+
+.sidebar2 .text{
+  color:white;
+  font-size: 25px;
+  font-weight: 600;
+  line-height: 65px;
+  text-align: center;
+  background: #1e1e1e;
+  letter-spacing: 1px;
+}
+
+.nav ul{
+  background: #1b1b1b;
+  height: 100%;
+  width: 100%;
+  list-style: none;
+
+}
+.nav ul li{
+  line-height: 60px;
+  border-bottom: 1px solid white;
+}
+
+.nav ul li a{
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  padding-left: 40px;
+  font-weight:500;
+  display: block;
+  width:100%;
+  border-left: 3px solid transparent;
+  position: relative;
+}
+
+.nav ul li.active a {
+  color: #00DEB6;
+  background: #1e1e1e;
+  border-left-color: #00DEB6 ;
+}
+
+
+
+.nav ul li.active ul li a {
+  color: #e6e6e6;
+  background: #1b1b1b;
+  border-left-color: transparent ;
+}
+
+.nav ul ul li a:hover{
+  color: cyan!important;
+  background: #1e1e1e!important;
+  
+}
+.nav ul li:last-child{
+  border-bottom: 1px solid red;
+
+}
+
+.nav ul ul{
+  position: static;
+  display: none;
+}
+
+.nav ul .item-show.show{
+  display: block;
+}
+.nav ul .serv-show.show1{
+  display: block;
+}
+ 
+.nav ul ul li{
+  line-height: 42px;
+  border-bottom: none;
+}
+.nav ul ul li a{
+  font-size: 17px;
+  color: #e6e6e6;
+  padding-left: 80px;
+}
+
+.nav ul li a span{
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  font-size: 100px;
+  transform: translateY(-50%);
+  font-size: 22px;
+  transition: transform 0.4s;
+}
+
+.nav ul li a span.rotate{
+
+    transform: translateY(-50%) rotate(-180deg);
+
+}
+*/
