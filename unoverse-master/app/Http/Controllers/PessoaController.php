@@ -25,7 +25,16 @@ use Illuminate\Support\Facades\Session;
 class PessoaController extends Controller
 {
     public function cadastrar( Request $request ){   
-       // $user = $req->session()->get('user');
+       
+        
+        if($request['password'] != $request['password-confirmation']){
+           
+            return redirect()->back()
+                     ->withErrors(['password-confirmation' => 'As senhas digitadas não coincidem. Por favor, tente novamente.'])
+                     ->withInput();
+        }
+       
+        // $user = $req->session()->get('user');
        
        //$dados_pessoa = $req->session()->get('user');
         //$dados = json_decode($dados_pessoa, true);
@@ -57,9 +66,10 @@ class PessoaController extends Controller
         }
     
 
-        $senha=$request['senha'];
+       
 
-        $senhacript =  md5($senha);
+        $senhacript =  md5($request['password']);
+        
         $banco = array(
             "email" => $request['email'], 
             "senha" => $senhacript,
@@ -68,8 +78,8 @@ class PessoaController extends Controller
             "sobrenome" => $request['sobrenome'],
             "genero" => $request['genero'], 
             "curioso" => $request['curioso'],
-            "adm" => false, 
-            "ativo" => true
+            "adm" => 0, 
+            "ativo" => 1,
         );
          
         
@@ -79,7 +89,7 @@ class PessoaController extends Controller
 
         $id_user = Pessoa::orderBy('id', 'desc') ->value('id'); //seleciona o ultimo id inserio em Atividades
         
-        if($request['type_user'] == "aluno")
+        if($request['typeuser'] == "aluno")
         {    
             $escola = $user['codigo_escola'];
            
@@ -94,7 +104,7 @@ class PessoaController extends Controller
 
              
         }
-        else if($request['type_user'] == "professor")
+        else if($request['typeuser'] == "professor")
         {
             $escola = $request['codigo_escola'];
             $dado = array (
@@ -147,6 +157,7 @@ class PessoaController extends Controller
         
         return view('menu.perfil',compact('user','img','userModo','escolas','id_escola'));
     }
+
     public function perfiladm(){
         $id = Auth::user()->id;   
         $user = Pessoa::where('id',$id)->first();
@@ -185,7 +196,7 @@ class PessoaController extends Controller
                                     // $autenticado = Auth()->attempt($credenciais);
        
         if(!$user){
-            return redirect()->route('menu.menuCad')->with('user_semCad', 'Usuário não encontrado. Cadastre-se !');;
+            return redirect()->route('menu.menuCad')->with('user_semCad', 'Usuário não encontrado. Cadastre-se !');
         }                             
         
         else if($user['ativo'] == true) {                         

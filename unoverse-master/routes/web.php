@@ -59,7 +59,7 @@ Route::get('/menu/menuCad',['as'=>'menu.menuCad','uses'=>'App\Http\Controllers\M
 Route::get('/users/professor/conteudo',['as'=>'menu.conteudo','uses'=>'App\Http\Controllers\MenuController@teste']);
 
 
-Route::get('/menu/', [PessoaController::class, 'redirecionaAtv'])->name('perfil.atividade');
+Route::get('/menu', [PessoaController::class, 'redirecionaAtv'])->name('perfil.atividade');
 
 Route::get('/users/logadaAluno/{nivel}', [PessoaController::class, 'nivelAtvAluno'])->name('atvAluno.nivel');
 

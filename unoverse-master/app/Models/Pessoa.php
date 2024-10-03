@@ -14,6 +14,6 @@ class Pessoa  extends Authenticatable
     //use HasApiTokens, HasFactory, Notifiable;
     //use HasFactory;
     public $incrementing = false;
-    protected $dateFormat = '"Y-m-d H:i:s"';
+   // protected $dateFormat = '"Y-m-d H:i:s"';
     protected $fillable = ['email','senha','foto','nome','sobrenome','genero','curioso','adm','ativo'];
 }

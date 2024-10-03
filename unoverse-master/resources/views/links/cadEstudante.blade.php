@@ -16,17 +16,17 @@
             {{csrf_field() }}
             <div class="cad-items">
                 <label for="nome">Nome:</label>
-                <input type="text" name="nome" id="nome" autocomplete="off" value="" required>
+                <input type="text" name="nome" id="nome" autocomplete="off" value="{{ old('nome') }}" required>
             </div>
 
             <div class="cad-items">
                 <label for="nome">Sobrenome:</label>
-                <input type="text" name="sobrenome" id="sobrenome" autocomplete="off"value="" required>
+                <input type="text" name="sobrenome" id="sobrenome" autocomplete="off" value="{{ old('sobrenome') }}" required>
             </div>
 
             <div class="cad-items">
                 <label for="nome">Email:</label>
-                <input type="email" name="email" id="email" value="" required>
+                <input type="email" name="email" id="email" value="{{ old('email') }}" required>
             </div>
  
             <div class="cad-items">
@@ -68,7 +68,7 @@
             <div class="cad-items">
                 <label for="foto">Foto:</label>
               
-                <input type="file" name="foto" id="foto">
+                <input type="file" name="foto" id="foto" >
 
             </div>
 
@@ -92,7 +92,7 @@
                         Prefiro não dizer
                     </label>
 
-                    <input type="hidden" name="curioso" value="false">
+                    <input type="hidden" name="curioso" value="0">
                     <input type="hidden" name="typeuser" value="aluno">
             </div>
             </div>
@@ -105,7 +105,7 @@
         </form>
         <script src="{{ asset('js/eye.js') }}"></script> 
         <img src="{!! asset('img/cadastro/estudante.svg') !!}" title=" " alt="Essa imagem não foi encontrada :/ Mas é o robô mascote Jumper!!">
-        
+         
     </div>
     </div>
 </div>
