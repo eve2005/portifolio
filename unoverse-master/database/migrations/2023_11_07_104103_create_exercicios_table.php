@@ -14,13 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('exercicios', function (Blueprint $table) {
-            $table->bigInteger('id_exercicio')->primary();
-            $table->unsignedBigInteger('fk_atividade'); 
-            $table->foreign('fk_atividade')->references('num')->on('atividades');
-            $table->unsignedBigInteger('fk_alt_correta');   
-            $table->foreign('fk_alt_correta')->references('id_alt')->on('alternativas');
+            $table->bigInteger('id_exercicio');
+            $table->foreignId('atividade')->constrained('atividades', 'num');
+            $table->foreignId('fk_alt_correta')->constrained('alternativas', 'id_alt');
             $table->string('pergunta',500);
             $table->string('imagemAtv',30);
+            $table->integer('alt_1');
+            $table->integer('alt_2');
+            $table->integer('alt_3');
             $table->timestamps();
         });
     }

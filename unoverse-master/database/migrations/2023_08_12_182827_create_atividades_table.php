@@ -14,11 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('atividades', function (Blueprint $table) {
-            $table->id('num');
+            $table->bigIncrements('num');
             $table->string('nome',60);
-            $table->integer('modulo');
+            $table->string('modulo',30);
             $table->string('descricao',200);
             $table->boolean('aluno');
+            $table->string('link_aula',50);
+            $table->boolean('curiso');
+            $table->string('codigo',80);
             $table->timestamps();
         });
     }

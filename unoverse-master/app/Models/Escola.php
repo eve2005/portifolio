@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Escola extends Model
 {
+    use HasFactory;
     public $incrementing = false;
     protected $fillable = ['codigo_escola','nome_escola','UF', 'cidade','publica'];
-}       
+}

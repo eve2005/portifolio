@@ -14,10 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('arquivos', function (Blueprint $table) {
-            $table->id('num_arquivo');
+            $table->bigIncrements('num_arquivo');
             $table->string('upload',100);
-            $table->unsignedBigInteger('fk_num');
-            $table->foreign('fk_num')->references('num')->on('atividades');
+            $table->foreignId('fk_num')->constrained('atividades', 'num');
             $table->timestamps();
         });
     }

@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('escolas', function (Blueprint $table) {
-            $table->bigInteger('codigo_escola');
-            $table->string('nome_escola',80);
-            $table->string('UF',2);
-            $table->string('cidade',50);
+        Schema::create('alunos', function (Blueprint $table) {
+            $table->foreignId('id_aluno')->constrained('pessoas', 'id');
+            $table->string('email',50);
+            $table->foreignId('id_escola')->constrained('escolas', 'codigo_escola');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('escolas');
+        Schema::dropIfExists('alunos');
     }
 };

@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('alternativas', function (Blueprint $table) {
-            $table->bigIncrements('id_alt')->unique();
+            $table->bigIncrements('id_alt');
             $table->string('text_alt',350);
             $table->timestamps();
         });
