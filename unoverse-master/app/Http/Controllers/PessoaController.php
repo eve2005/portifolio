@@ -25,20 +25,16 @@ use Illuminate\Support\Facades\Session;
 class PessoaController extends Controller
 {
     public function cadastrar( Request $request ){   
-       
-        
+      
+        //Validação de senha
         if($request['password'] != $request['password-confirmation']){
            
             return redirect()->back()
                      ->withErrors(['password-confirmation' => 'As senhas digitadas não coincidem. Por favor, tente novamente.'])
                      ->withInput();
         }
-       
-        // $user = $req->session()->get('user');
-       
-       //$dados_pessoa = $req->session()->get('user');
-        //$dados = json_decode($dados_pessoa, true);
-
+      
+        //Manipulação de foto/diretorio
         if($request->hasFile('foto'))
         {
             $num = rand(1111,9999); // escolhe numero pra não repetir
@@ -64,9 +60,6 @@ class PessoaController extends Controller
                 $fotouser = "user/default/perfilCurioso.svg";
             }
         }
-    
-
-       
 
         $senhacript =  md5($request['password']);
         
@@ -78,35 +71,27 @@ class PessoaController extends Controller
             "sobrenome" => $request['sobrenome'],
             "genero" => $request['genero'], 
             "curioso" => $request['curioso'],
-            "adm" => 0, 
-            "ativo" => 1,
-        );
-         
-        
-
+            "adm" => false, 
+            "ativo" => true,
+        );      
+        //criação de linha na tabela Pessoa
         Pessoa::create($banco);
-        //antes ajustar cript senha, foto
-
-        $id_user = Pessoa::orderBy('id', 'desc') ->value('id'); //seleciona o ultimo id inserio em Atividades
-        
+       //Recuperação  o id de pessoa gerado
+        $id_user = Pessoa::orderBy('id', 'desc') ->value('id'); 
+        $escola = $request['codigo_escola'];
         if($request['typeuser'] == "aluno")
-        {    
-            $escola = $user['codigo_escola'];
-           
+        {   
             $dado = array(
                 "id_aluno" => $id_user , 
                 "email" => $request['email'],
                 "id_escola" => $escola,
-
             ); 
             
              Aluno::create($dado);
-
-             
         }
         else if($request['typeuser'] == "professor")
         {
-            $escola = $request['codigo_escola'];
+           
             $dado = array (
                 "id_prof" => $id_user , 
                 "email" => $request['email'],
@@ -117,7 +102,7 @@ class PessoaController extends Controller
         $id_pessoa = Pessoa::orderBy('id', 'desc') ->value('id');
         Auth::loginUsingId($id_pessoa);
         return redirect('/menu/home')->with('success', 'Cadastro realizado com sucesso! Agora você faz parte da familia unoverse <3');
-        // return view('menu.home')->with('success', 'Cadastro realizado com sucesso! Agora você faz parte na familia <3');
+        
 
     }
     public function index(){
@@ -137,7 +122,7 @@ class PessoaController extends Controller
                 $id_escola= Aluno::where('id_aluno',$id)->value('id_escola');
                
               }
-            else if( Auth::user()->curioso == 1)            
+            else if( Auth::user()->curioso == true)            
               { $userModo ='Curioso';
                 $id_escola = null; }
             else if(Professor::where('id_prof',$id)->first() )
@@ -161,7 +146,7 @@ class PessoaController extends Controller
     public function perfiladm(){
         $id = Auth::user()->id;   
         $user = Pessoa::where('id',$id)->first();
-        if(Auth::user()->adm == 1)
+        if(Auth::user()->adm == 'true')
         { $userModo ='Administrador'; }
             
 
@@ -308,7 +293,7 @@ class PessoaController extends Controller
         $id = Auth::user()->id;
             if( Aluno::where('id_aluno',$id)->first())
               {  return view('users.logadaAluno');}
-            else if( Auth::user()->curioso == 1)            
+            else if( Auth::user()->curioso == true)            
               {  return view('users.logadaCurioso');}
             else if(Professor::where('id_prof',$id)->first() )
                 {return view('users.logadaProfessor');}

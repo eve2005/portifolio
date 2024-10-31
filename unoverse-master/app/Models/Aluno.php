@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Aluno extends Model
 {
-    public $incrementing = false;
+   // public $incrementing = false;
     protected $fillable = ['id_aluno','email','id_escola'];
 }

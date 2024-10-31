@@ -32,7 +32,7 @@
             <div class="cad-items">
                 <label for="escola">Escola:</label>
                
-                <select name="codescola" id="escola" required>
+                <select name="codigo_escola" id="escola" required>
                     <!--Criar um forech com opções do banco-->
                     <option value="" data-default disabled selected></option> 
                     @foreach($escola as $esc)

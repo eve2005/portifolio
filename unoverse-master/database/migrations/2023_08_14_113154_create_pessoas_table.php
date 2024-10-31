@@ -17,7 +17,7 @@ return new class extends Migration
         Schema::create('pessoas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('email',50);
-            $table->string('senha',30);
+            $table->string('senha',80);
             $table->string('foto',80);
             $table->string('nome',20);
             $table->string('sobrenome',50);
